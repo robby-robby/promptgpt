@@ -13,7 +13,9 @@
 
   <script>
     let file = null;
+    const HOT = false;
     (async function main() {
+      if (!HOT) return;
       const h = await fetch("/prompts.html").then((r) => r.headers.get("etag"));
 
       if (file === null) file = h;

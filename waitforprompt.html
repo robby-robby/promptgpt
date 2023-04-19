@@ -1,0 +1,44 @@
+<style>
+  html {
+    background-color: #37393E;
+  }
+
+  #waiting {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    animation: rotate 2s linear infinite;
+    font-size: calc(30vh);
+  }
+
+  #waiting::after {
+    content: "🌀";
+  }
+
+  @keyframes rotate {
+    100% {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
+</style>
+<script>
+  (async function main() {
+    while (true) {
+      await new Promise(r => setTimeout(r, 250));
+      try {
+        await fetch('http://localhost:3000/prompts')
+        break;
+      } catch (e) {
+      }
+    }
+    window.location = "http://localhost:3000/prompts";
+  })();
+</script>
+
+<body>
+  <div id="waiting"></div>
+</body>
